@@ -1,12 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { NameComponent } from './name/name.component';
+import { AppRoutingModule } from './app-routing.module';
+import { StartComponent } from './start.component';
 
 @NgModule({
   declarations: [
+    StartComponent,
     AppComponent,
     NameComponent,
   ],
@@ -17,6 +19,6 @@ import { NameComponent } from './name/name.component';
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [StartComponent]
 })
 export class AppModule { }

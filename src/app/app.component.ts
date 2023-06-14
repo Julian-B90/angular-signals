@@ -1,4 +1,4 @@
-import { Component, computed, effect, signal } from "@angular/core";
+import { Component, effect, signal } from '@angular/core';
 
 interface Todo {
   id: number;
