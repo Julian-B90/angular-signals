@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal, effect } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 const originalTodos = [
   { id: 1, title: 'Learn signals', done: false },
@@ -12,13 +13,20 @@ const originalTodos = [
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   myModel: any;
 
   todos = signal(originalTodos);
+
+
+  firstname = signal('Julian');
+  lastname = signal('schmidt');
+
+  fullName = computed(() => {
+    return `${this.firstname()} ${this.lastname()}`
+  })
 
   onlyDoneTodo = computed(() => {
     return this.todos().filter((item) => !item.done);
@@ -29,10 +37,14 @@ export class AppComponent {
 
   title = 'my-app-signals';
 
-  public updateTitle() {
-    this.todos.mutate((value) => {
-      value[3].title = 'Das ist ein Test';
+  constructor() {
+    effect(() => {
+      console.log(`The todos is: ${this.todos().map(i => i.title)})`);
     });
+  }
+
+  firstNameUpdate() {
+    this.firstname.set('Marcel');
   }
 
   public addTodo() {
