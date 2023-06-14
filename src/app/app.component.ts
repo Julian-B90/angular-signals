@@ -1,7 +1,12 @@
-import { ChangeDetectionStrategy, Component, computed, signal, effect } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, computed, effect, signal } from "@angular/core";
 
-const originalTodos = [
+interface Todo {
+  id: number;
+  title: string;
+  done: boolean;
+}
+
+const originalTodos: Todo[] = [
   { id: 1, title: 'Learn signals', done: false },
   { id: 2, title: 'Foo', done: false },
   { id: 3, title: 'Bar', done: false },
@@ -9,24 +14,22 @@ const originalTodos = [
   { id: 5, title: 'Klaus', done: false },
 ];
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   myModel: any;
 
   todos = signal(originalTodos);
 
-
   firstname = signal('Julian');
   lastname = signal('schmidt');
 
   fullName = computed(() => {
-    return `${this.firstname()} ${this.lastname()}`
-  })
+    return `${this.firstname()} ${this.lastname()}`;
+  });
 
   onlyDoneTodo = computed(() => {
     return this.todos().filter((item) => !item.done);
@@ -39,7 +42,7 @@ export class AppComponent {
 
   constructor() {
     effect(() => {
-      console.log(`The todos is: ${this.todos().map(i => i.title)})`);
+      console.log(`The todos is: ${this.todos().map((i) => i.title)})`);
     });
   }
 
@@ -79,10 +82,7 @@ export class AppComponent {
     });
   }
 
-
   public replaceAll() {
-    this.todos.set([
-      { id: 1, title: 'bla', done: false },
-    ]);
+    this.todos.set([{ id: 1, title: 'bla', done: false }]);
   }
 }
