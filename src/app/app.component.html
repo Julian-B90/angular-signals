@@ -1,16 +1,17 @@
-<button routerLink="/name">Page => Name</button>
+<button routerLink="/name">Page => Name</button> <br>
 
-Todos
+<div class="foo">
+  Todos
 
-<ul>
-  <li *ngFor="let todo of todos()">
-    {{todo.title}} {{todo.done ? 'Ja' : 'Nein'}}
-    <button (click)="done(todo.id)">Done</button>
-    <button (click)="delteTodo(todo.id)">Remove</button>
-  </li>
-</ul>
+  <ul>
+    <li *ngFor="let todo of todos()">
+      {{ todo.title }} {{ todo.done ? "Ja" : "Nein" }}
+      <button (click)="done(todo.id)">Done</button>
+      <button (click)="delteTodo(todo.id)">Remove</button>
+    </li>
+  </ul>
 
-<!-- Nicht erledigte Todos:
+  <!-- Nicht erledigte Todos:
 <ul>
   <li *ngFor="let todo of onlyDoneTodo()">
     {{todo.title}} {{todo.done ? 'Ja' : 'Nein'}}
@@ -31,3 +32,4 @@ Erledigte Todos:
 <button (click)="addTodo()">add todo</button>
 <br />
 <button (click)="replaceAll()">replace</button> -->
+</div>
