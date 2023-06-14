@@ -1,4 +1,14 @@
-Nicht erledigte Todos:
+Todos
+
+<ul>
+  <li *ngFor="let todo of todos()">
+    {{todo.title}} {{todo.done ? 'Ja' : 'Nein'}}
+    <button (click)="done(todo.id)">Done</button>
+    <button (click)="delteTodo(todo.id)">Remove</button>
+  </li>
+</ul>
+
+<!-- Nicht erledigte Todos:
 <ul>
   <li *ngFor="let todo of onlyDoneTodo()">
     {{todo.title}} {{todo.done ? 'Ja' : 'Nein'}}
@@ -6,11 +16,6 @@ Nicht erledigte Todos:
     <button (click)="delteTodo(todo.id)">Remove</button>
   </li>
 </ul>
-
-
-Name: {{fullName()}}
-
-<button (click)="firstNameUpdate()">Update Firstname</button>
 
 Erledigte Todos:
 <ul>
@@ -23,4 +28,4 @@ Erledigte Todos:
 <input type="text" [(ngModel)]="myModel"/>
 <button (click)="addTodo()">add todo</button>
 <br />
-<button (click)="replaceAll()">replace</button>
+<button (click)="replaceAll()">replace</button> -->

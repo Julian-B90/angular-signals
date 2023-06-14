@@ -24,19 +24,12 @@ export class AppComponent {
 
   todos = signal(originalTodos);
 
-  firstname = signal('Julian');
-  lastname = signal('schmidt');
-
-  fullName = computed(() => {
-    return `${this.firstname()} ${this.lastname()}`;
-  });
-
-  onlyDoneTodo = computed(() => {
-    return this.todos().filter((item) => !item.done);
-  });
-  doneTodo = computed(() => {
-    return this.todos().filter((item) => item.done);
-  });
+  // onlyDoneTodo = computed(() => {
+  //   return this.todos().filter((item) => !item.done);
+  // });
+  // doneTodo = computed(() => {
+  //   return this.todos().filter((item) => item.done);
+  // });
 
   title = 'my-app-signals';
 
@@ -44,10 +37,6 @@ export class AppComponent {
     effect(() => {
       console.log(`The todos is: ${this.todos().map((i) => i.title)})`);
     });
-  }
-
-  firstNameUpdate() {
-    this.firstname.set('Marcel');
   }
 
   public addTodo() {
