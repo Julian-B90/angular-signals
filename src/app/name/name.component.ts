@@ -8,8 +8,9 @@ import { Component, computed, effect, signal } from '@angular/core';
 export class NameComponent {
   changeName = '';
 
-  firstName = signal('Julian');
-  lastName = signal('Schmidt');
+  firstName = signal('Paul');
+  lastName = signal('Irmer');
+
   fullName = computed(() => `${this.firstName()} ${this.lastName()}`);
 
   constructor() {

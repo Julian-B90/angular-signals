@@ -1,4 +1,4 @@
-import { Component, effect, signal } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 
 interface Todo {
   id: number;
@@ -8,8 +8,8 @@ interface Todo {
 
 const originalTodos: Todo[] = [
   { id: 1, title: 'Learn signals', done: false },
-  { id: 2, title: 'Foo', done: false },
-  { id: 3, title: 'Bar', done: false },
+  { id: 2, title: 'Foo', done: true },
+  { id: 3, title: 'Bar', done: true },
   { id: 4, title: 'Klasse', done: false },
   { id: 5, title: 'Klaus', done: false },
 ];
@@ -24,12 +24,12 @@ export class AppComponent {
 
   todos = signal(originalTodos);
 
-  // onlyDoneTodo = computed(() => {
-  //   return this.todos().filter((item) => !item.done);
-  // });
-  // doneTodo = computed(() => {
-  //   return this.todos().filter((item) => item.done);
-  // });
+  onlyDoneTodo = computed(() => {
+    return this.todos().filter((item) => !item.done);
+  });
+  doneTodo = computed(() => {
+    return this.todos().filter((item) => item.done);
+  });
 
   title = 'my-app-signals';
 

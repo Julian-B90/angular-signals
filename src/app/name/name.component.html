@@ -3,7 +3,7 @@
 
 <div>
   <p>
-    Firstname: {{firstName()}}
+    Firstname: {{firstName()}} <br />
     Lastname: {{lastName()}}
   </p>
 
@@ -11,6 +11,6 @@
     Fullname: {{fullName()}}
   </p>
 
-
-  <input type="text" [(ngModel)]="changeName" />
+  <input type="text" [(ngModel)]="changeName" /> <br />
+  <button (click)="setName()">Change Firstname</button>
 </div>
